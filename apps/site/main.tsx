@@ -2,6 +2,7 @@ import { StrictMode, useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 
 import "@stackui/react/styles.css";
+import { DetalhePedido, Pedidos } from "./orders";
 import { App, Avatar, Badge, Button, Card, ContentUnavailableView, ProgressSteps, Redacted, SkeletonList, ToastProvider, useToast, type ButtonState, HStack, List, NavigationBar, NavigationStack, Picker, Row, SearchField, Section, Sheet, Stepper, TabBar, Text, TextEditor, TextField, Toggle, ToolbarButton, VStack } from "@stackui/react";
 
 /* Tiny inline icons for the demo (the library takes any icon element). */
@@ -196,7 +197,10 @@ function Componentes() {
   );
 }
 
+const PASTA = icone("M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z");
+
 const ABAS = [
+  { id: "orders", label: "Orders", icon: PASTA, href: "#/orders", badge: 3 },
   { id: "settings", label: "Settings", icon: ENGRENAGEM, href: "#/settings" },
   { id: "components", label: "Components", icon: QUADRADOS, href: "#/components" },
 ];
@@ -204,6 +208,7 @@ const ABAS = [
 function tela(caminho: string) {
   const [, aba, detalhe] = caminho.split("/");
   if (aba === "components") return <Componentes />;
+  if (aba === "orders") return detalhe ? <DetalhePedido id={detalhe} /> : <Pedidos />;
   if (detalhe) return <Detalhe id={detalhe} />;
   return <Ajustes />;
 }

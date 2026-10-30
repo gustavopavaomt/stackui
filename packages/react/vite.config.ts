@@ -12,14 +12,15 @@ export default defineConfig({
     emptyOutDir: true,
     sourcemap: true,
     lib: {
-      entry: `${raiz}src/index.ts`,
+      // The barcode scanner is its own entry: apps that never use it never download it.
+      entry: { index: `${raiz}src/index.ts`, barcode: `${raiz}src/barcode.ts` },
       formats: ["es"],
-      fileName: "index",
+      fileName: (_formato, nome) => `${nome}.js`,
       cssFileName: "styles",
     },
     rollupOptions: {
       // React stays with the app: one copy, the app's version.
-      external: ["react", "react-dom", "react/jsx-runtime", "react-dom/client"],
+      external: ["react", "react-dom", "react/jsx-runtime", "react-dom/client", /^@zxing\//],
     },
   },
   test: {

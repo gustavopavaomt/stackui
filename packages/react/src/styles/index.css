@@ -2,6 +2,7 @@
 @import "./components.css";
 @import "./controls.css";
 @import "./feedback.css";
+@import "./overlays.css";
 
 /*
  * Base. Nothing global besides the tokens: an app opts in by wrapping its root in <App> (or adding .st-app),
@@ -18,9 +19,32 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+/* Layers portaled to <body> (sheets, alerts, menus, toasts) live outside .st-app: they get the same base. */
+.st-sheet-backdrop,
+.st-alert-backdrop,
+.st-menu,
+.st-toast-region {
+  font-family: var(--st-font);
+  font-size: 1.0625rem;
+  line-height: 1.375rem;
+  color: var(--st-label);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
 .st-app *,
 .st-app *::before,
-.st-app *::after {
+.st-app *::after,
+.st-sheet-backdrop *,
+.st-sheet-backdrop *::before,
+.st-sheet-backdrop *::after,
+.st-alert-backdrop *,
+.st-alert-backdrop *::before,
+.st-alert-backdrop *::after,
+.st-menu,
+.st-menu *,
+.st-menu *::before,
+.st-toast-region * {
   box-sizing: border-box;
 }
 

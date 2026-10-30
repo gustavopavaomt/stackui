@@ -2,7 +2,7 @@ import { StrictMode, useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 
 import "@stackui/react/styles.css";
-import { App, Badge, Button, type ButtonState, HStack, List, NavigationBar, NavigationStack, Picker, Row, SearchField, Section, Sheet, Stepper, TabBar, Text, TextEditor, TextField, Toggle, ToolbarButton, VStack } from "@stackui/react";
+import { App, Avatar, Badge, Button, Card, ContentUnavailableView, ProgressSteps, Redacted, SkeletonList, ToastProvider, useToast, type ButtonState, HStack, List, NavigationBar, NavigationStack, Picker, Row, SearchField, Section, Sheet, Stepper, TabBar, Text, TextEditor, TextField, Toggle, ToolbarButton, VStack } from "@stackui/react";
 
 /* Tiny inline icons for the demo (the library takes any icon element). */
 const icone = (d: string) => (
@@ -82,6 +82,16 @@ function Componentes() {
   const [modo, setModo] = useState<"delivery" | "pickup">("delivery");
   const [qtd, setQtd] = useState(1);
   const [email, setEmail] = useState("");
+  const [carregando, setCarregando] = useState(false);
+  const { show } = useToast();
+  const enviar = () => {
+    const t = show("Sending order…", "progress");
+    window.setTimeout(() => t.update("Order sent", "success", { label: "View", onPress: () => undefined }), 1800);
+  };
+  const recarregar = () => {
+    setCarregando(true);
+    window.setTimeout(() => setCarregando(false), 3000);
+  };
   const salvar = () => {
     setEstado("loading");
     window.setTimeout(() => setEstado("done"), 900);
@@ -133,6 +143,36 @@ function Componentes() {
             <Button variant="plain">Plain</Button>
           </VStack>
         </Section>
+        <Section header="Feedback">
+          <VStack spacing={12} style={{ padding: 16 }}>
+            <Button onClick={enviar}>Send with a toast</Button>
+            <Button variant="bordered" onClick={() => show("Could not connect", "error")}>
+              Show an error
+            </Button>
+            <Button variant="plain" onClick={recarregar}>
+              Reload clients
+            </Button>
+          </VStack>
+        </Section>
+        <Section header="Clients">
+          <Redacted isLoading={carregando} placeholder={<SkeletonList rows={3} leading="circle" />}>
+            {["Mercadinho do Zé", "Pão Quente", "Bank of America"].map((n, i) => (
+              <Row key={n} leading={<Avatar name={n} colorKey={i} />} title={n} subtitle="Customer since 2024" href="#/components" />
+            ))}
+          </Redacted>
+        </Section>
+        <Section header="Steps">
+          <ProgressSteps steps={[{ text: "Tap the Share button" }, { text: "Choose Add to Home Screen" }, { text: "Open the app from the icon" }]} />
+        </Section>
+        <Section header="Card" plain>
+          <Card href="#/components">
+            <Text font="headline">Monthly goal</Text>
+            <Text color="secondary">72% reached, 8 days left</Text>
+          </Card>
+        </Section>
+        <Section header="Empty state" plain>
+          <ContentUnavailableView title="No orders yet" description="Orders you create on this device show up here." icon={QUADRADOS} />
+        </Section>
         <Section header="Text">
           <VStack spacing={6} style={{ padding: 16 }}>
             <Text font="title">Title</Text>
@@ -174,8 +214,10 @@ function Demo() {
   const aba = caminho.split("/")[1] || "settings";
   return (
     <App>
+      <ToastProvider>
       <NavigationStack location={caminho} render={(l) => <div style={{ paddingBottom: 120 }}>{tela(l)}</div>} />
       <TabBar items={ABAS} selection={aba} hidden={caminho.split("/").filter(Boolean).length > 1} />
+      </ToastProvider>
     </App>
   );
 }

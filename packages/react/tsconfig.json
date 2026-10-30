@@ -19,19 +19,10 @@
     "types": [
       "vitest/globals",
       "node"
-    ],
-    "paths": {
-      "@stackui/react": [
-        "./src/index.ts"
-      ],
-      "@stackui/react/styles.css": [
-        "./src/styles/index.css"
-      ]
-    }
+    ]
   },
   "include": [
     "src",
-    "demo",
     "vite.config.ts"
   ]
 }

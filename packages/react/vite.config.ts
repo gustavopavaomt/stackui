@@ -7,10 +7,6 @@ const raiz = fileURLToPath(new URL(".", import.meta.url));
 
 export default defineConfig({
   plugins: [react()],
-  resolve: {
-    // The demo imports the library from source, exactly as an app imports the package.
-    alias: { "@stackui/react/styles.css": `${raiz}src/styles/index.css`, "@stackui/react": `${raiz}src/index.ts` },
-  },
   build: {
     outDir: `${raiz}dist`,
     emptyOutDir: true,

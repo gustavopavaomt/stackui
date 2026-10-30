@@ -1,67 +1,16 @@
 {
-  "name": "@stackui/react",
-  "version": "0.0.0",
+  "name": "stackui",
+  "private": true,
   "description": "Build dynamic and elegant PWA applications for iOS and Android with React.",
   "license": "MIT",
-  "author": "Gustavo Pavao Barboza",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gustavopavaomt/stackui.git"
-  },
-  "homepage": "https://github.com/gustavopavaomt/stackui#readme",
-  "bugs": "https://github.com/gustavopavaomt/stackui/issues",
-  "keywords": [
-    "react",
-    "pwa",
-    "ios",
-    "android",
-    "ui",
-    "components",
-    "mobile"
-  ],
-  "type": "module",
-  "sideEffects": [
-    "**/*.css"
-  ],
-  "files": [
-    "dist"
-  ],
-  "exports": {
-    ".": {
-      "types": "./dist/types/index.d.ts",
-      "import": "./dist/index.js"
-    },
-    "./styles.css": "./dist/styles.css"
-  },
-  "module": "./dist/index.js",
-  "types": "./dist/types/index.d.ts",
+  "workspaces": ["packages/*", "apps/*"],
   "scripts": {
-    "dev": "vite demo",
-    "build": "vite build && tsc -p tsconfig.build.json",
-    "typecheck": "tsc -p tsconfig.json --noEmit",
-    "test": "vitest run"
-  },
-  "peerDependencies": {
-    "react": ">=19",
-    "react-dom": ">=19"
-  },
-  "devDependencies": {
-    "@types/node": "^22.20.5",
-    "@types/react": "^19.3.0",
-    "@types/react-dom": "^19.3.0",
-    "@vitejs/plugin-react": "^6.1.1",
-    "jsdom": "^29.1.1",
-    "react": "^19.3.0",
-    "react-dom": "^19.3.0",
-    "typescript": "^6.0.3",
-    "vite": "^8.3.0",
-    "vitest": "^5.0.1"
+    "dev": "npm run dev -w apps/site",
+    "build": "npm run build -w packages/react && npm run build -w apps/site",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm test --workspaces --if-present"
   },
   "engines": {
     "node": ">=20"
-  },
-  "publishConfig": {
-    "access": "public",
-    "provenance": true
   }
 }

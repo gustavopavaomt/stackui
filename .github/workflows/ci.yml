@@ -24,4 +24,4 @@ jobs:
       - run: npm test
       - run: npm run build
       # The package ships only dist/: check what would be published.
-      - run: npm pack --dry-run
+      - run: npm pack --dry-run -w packages/react

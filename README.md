@@ -46,9 +46,16 @@ Light and dark follow the system. Force one with `<html data-theme="light">` or 
 
 ## Develop
 
+This repository holds the library and its showcase site:
+
+| folder | what |
+|---|---|
+| `packages/react` | the `@stackui/react` package |
+| `apps/site` | the showcase site, using the library like any app would |
+
 ```sh
 npm install
-npm run dev      # the demo, with every component
+npm run dev      # the showcase site, with every component
 npm test
 npm run build
 ```

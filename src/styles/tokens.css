@@ -1,0 +1,99 @@
+/*
+ * Design tokens. Every component reads these variables, so an app themes the whole library by overriding them
+ * (usually only --st-tint, the accent color). Light and dark follow the system; force one with
+ * <html data-theme="light"> or <html data-theme="dark">.
+ */
+:root {
+  --st-tint: #007aff;
+  --st-on-tint: #ffffff;
+
+  --st-background: #f2f2f7;
+  --st-surface: #ffffff;
+  --st-elevated: #ffffff;
+  --st-sheet: #f2f2f7;
+  --st-label: #000000;
+  --st-secondary-label: #6c6c70;
+  --st-tertiary-label: #aeaeb2;
+  --st-separator: #c6c6c8;
+  --st-fill: rgb(118 118 128 / 0.12);
+
+  --st-success: #248a3d;
+  --st-success-fill: rgb(52 199 89 / 0.15);
+  --st-warning: #c25700;
+  --st-warning-fill: rgb(255 149 0 / 0.15);
+  --st-danger: #d70015;
+  --st-danger-fill: rgb(255 59 48 / 0.12);
+
+  --st-blue: #007aff;
+  --st-green: #34c759;
+  --st-orange: #ff9500;
+  --st-red: #ff3b30;
+  --st-indigo: #5856d6;
+  --st-yellow: #ffcc00;
+  --st-gray: #8e8e93;
+  --st-teal: #30b0c7;
+
+  --st-font: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --st-radius-control: 12px;
+  --st-radius-card: 22px;
+  --st-hit: 44px;
+  --st-control-height: 50px;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --st-tint: #0a84ff;
+    --st-background: #1c1c1e;
+    --st-surface: #2c2c2e;
+    --st-elevated: #3a3a3c;
+    --st-sheet: #242426;
+    --st-label: #ffffff;
+    --st-secondary-label: #98989f;
+    --st-tertiary-label: #6e6e73;
+    --st-separator: #48484a;
+    --st-fill: rgb(118 118 128 / 0.24);
+    --st-success: #30d158;
+    --st-success-fill: rgb(48 209 88 / 0.2);
+    --st-warning: #ffb340;
+    --st-warning-fill: rgb(255 159 10 / 0.2);
+    --st-danger: #ff6961;
+    --st-danger-fill: rgb(255 69 58 / 0.2);
+    --st-blue: #0a84ff;
+    --st-green: #30d158;
+    --st-orange: #ff9f0a;
+    --st-red: #ff453a;
+    --st-indigo: #5e5ce6;
+    --st-yellow: #ffd60a;
+    --st-teal: #40c8e0;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --st-tint: #0a84ff;
+  --st-background: #1c1c1e;
+  --st-surface: #2c2c2e;
+  --st-elevated: #3a3a3c;
+  --st-sheet: #242426;
+  --st-label: #ffffff;
+  --st-secondary-label: #98989f;
+  --st-tertiary-label: #6e6e73;
+  --st-separator: #48484a;
+  --st-fill: rgb(118 118 128 / 0.24);
+  --st-success: #30d158;
+  --st-success-fill: rgb(48 209 88 / 0.2);
+  --st-warning: #ffb340;
+  --st-warning-fill: rgb(255 159 10 / 0.2);
+  --st-danger: #ff6961;
+  --st-danger-fill: rgb(255 69 58 / 0.2);
+  --st-blue: #0a84ff;
+  --st-green: #30d158;
+  --st-orange: #ff9f0a;
+  --st-red: #ff453a;
+  --st-indigo: #5e5ce6;
+  --st-yellow: #ffd60a;
+  --st-teal: #40c8e0;
+  color-scheme: dark;
+}

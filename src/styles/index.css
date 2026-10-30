@@ -1,0 +1,56 @@
+@import "./tokens.css";
+
+/*
+ * Base. Nothing global besides the tokens: an app opts in by wrapping its root in <App> (or adding .st-app),
+ * so the library never fights the host page's own styles.
+ */
+.st-app {
+  min-height: 100dvh;
+  background: var(--st-background);
+  color: var(--st-label);
+  font-family: var(--st-font);
+  font-size: 1.0625rem;
+  line-height: 1.375rem;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.st-app *,
+.st-app *::before,
+.st-app *::after {
+  box-sizing: border-box;
+}
+
+/* ---- Text: the platform text styles (size / line height / weight) ---- */
+.st-text {
+  margin: 0;
+  color: var(--st-label);
+}
+.st-text--largeTitle { font-size: 2.125rem; line-height: 2.5625rem; font-weight: 700; letter-spacing: 0.0234em; }
+.st-text--title { font-size: 1.75rem; line-height: 2.125rem; font-weight: 700; letter-spacing: 0.0195em; }
+.st-text--title2 { font-size: 1.375rem; line-height: 1.75rem; font-weight: 700; letter-spacing: 0.0219em; }
+.st-text--title3 { font-size: 1.25rem; line-height: 1.5625rem; font-weight: 600; letter-spacing: 0.0237em; }
+.st-text--headline { font-size: 1.0625rem; line-height: 1.375rem; font-weight: 600; letter-spacing: -0.0255em; }
+.st-text--body { font-size: 1.0625rem; line-height: 1.375rem; font-weight: 400; letter-spacing: -0.0255em; }
+.st-text--callout { font-size: 1rem; line-height: 1.3125rem; font-weight: 400; letter-spacing: -0.0194em; }
+.st-text--subheadline { font-size: 0.9375rem; line-height: 1.25rem; font-weight: 400; letter-spacing: -0.0153em; }
+.st-text--footnote { font-size: 0.8125rem; line-height: 1.125rem; font-weight: 400; letter-spacing: -0.0062em; }
+.st-text--caption { font-size: 0.75rem; line-height: 1rem; font-weight: 400; }
+.st-text--caption2 { font-size: 0.6875rem; line-height: 0.8125rem; font-weight: 400; letter-spacing: 0.0064em; }
+
+.st-text--secondary { color: var(--st-secondary-label); }
+.st-text--tertiary { color: var(--st-tertiary-label); }
+.st-text--tint { color: var(--st-tint); }
+.st-text--danger { color: var(--st-danger); }
+.st-text--lineLimit { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* ---- Stacks ---- */
+.st-stack { display: flex; min-width: 0; }
+.st-vstack { flex-direction: column; }
+.st-hstack { flex-direction: row; }
+.st-zstack { display: grid; }
+.st-zstack > * { grid-area: 1 / 1; }
+.st-spacer { flex: 1 1 0; min-width: 0; min-height: 0; }
+.st-divider { flex: none; align-self: stretch; border: 0; margin: 0; background: var(--st-separator); }
+.st-divider--horizontal { height: 0.5px; }
+.st-divider--vertical { width: 0.5px; }

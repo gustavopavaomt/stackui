@@ -1,0 +1,7 @@
+node_modules/
+dist/
+coverage/
+*.local
+*.tsbuildinfo
+# Internal planning notes (not part of the library)
+PLANO.md

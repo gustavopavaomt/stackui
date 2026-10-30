@@ -2,7 +2,7 @@ import { StrictMode, useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 
 import "@stackui/react/styles.css";
-import { App, Button, type ButtonState, List, NavigationBar, NavigationStack, Row, Section, Sheet, TabBar, Text, ToolbarButton, VStack } from "@stackui/react";
+import { App, Badge, Button, type ButtonState, HStack, List, NavigationBar, NavigationStack, Picker, Row, SearchField, Section, Sheet, Stepper, TabBar, Text, TextEditor, TextField, Toggle, ToolbarButton, VStack } from "@stackui/react";
 
 /* Tiny inline icons for the demo (the library takes any icon element). */
 const icone = (d: string) => (
@@ -77,6 +77,11 @@ function Detalhe({ id }: { id: string }) {
 function Componentes() {
   const [estado, setEstado] = useState<ButtonState>("idle");
   const [folha, setFolha] = useState(false);
+  const [busca, setBusca] = useState("");
+  const [avisos, setAvisos] = useState(true);
+  const [modo, setModo] = useState<"delivery" | "pickup">("delivery");
+  const [qtd, setQtd] = useState(1);
+  const [email, setEmail] = useState("");
   const salvar = () => {
     setEstado("loading");
     window.setTimeout(() => setEstado("done"), 900);
@@ -85,7 +90,37 @@ function Componentes() {
   return (
     <>
       <NavigationBar title="Components" />
+      <SearchField sticky value={busca} onChange={setBusca} label="Search components" />
       <List>
+        <Section header="Controls">
+          <Row title="Notifications" accessory={<Toggle isOn={avisos} onChange={setAvisos} label="Notifications" />} />
+          <Row title="Quantity" accessory={<Stepper value={qtd} onChange={setQtd} label="Quantity" />} />
+          <div style={{ padding: "8px 16px 12px" }}>
+            <Picker
+              selection={modo}
+              onChange={setModo}
+              label="Mode"
+              options={[
+                { value: "delivery", label: "Delivery" },
+                { value: "pickup", label: "Pickup" },
+              ]}
+            />
+          </div>
+        </Section>
+        <Section header="Fields">
+          <TextField label="Email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} error={email && !email.includes("@") ? "Type a valid email" : undefined} />
+          <TextField label="Phone" type="tel" />
+          <TextEditor label="Note" />
+        </Section>
+        <Section header="Badges">
+          <HStack spacing={8} style={{ padding: 16, flexWrap: "wrap" }}>
+            <Badge>Draft</Badge>
+            <Badge tone="tint">New</Badge>
+            <Badge tone="success">Sent</Badge>
+            <Badge tone="warning">Pending</Badge>
+            <Badge tone="danger">Rejected</Badge>
+          </HStack>
+        </Section>
         <Section header="Buttons">
           <VStack spacing={12} style={{ padding: 16 }}>
             <Button state={estado} onClick={salvar} loadingLabel="Saving…" doneLabel="Saved">

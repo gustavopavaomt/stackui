@@ -1,5 +1,6 @@
 @import "./tokens.css";
 @import "./components.css";
+@import "./controls.css";
 
 /*
  * Base. Nothing global besides the tokens: an app opts in by wrapping its root in <App> (or adding .st-app),

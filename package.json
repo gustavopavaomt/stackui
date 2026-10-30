@@ -5,8 +5,8 @@
   "license": "MIT",
   "workspaces": ["packages/*", "apps/*"],
   "scripts": {
-    "dev": "npm run dev -w apps/site",
-    "build": "npm run build -w packages/react && npm run build -w apps/site",
+    "dev": "npm run dev -w apps/playground",
+    "build": "npm run build -w packages/react && npm run build -w apps/playground",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "test": "npm test --workspaces --if-present"
   },

@@ -1,7 +1,7 @@
 {
-  "name": "@stackui/site",
+  "name": "@stackui/playground",
   "private": true,
-  "description": "The StackUI showcase: every component, live.",
+  "description": "The StackUI playground: every component in a demo app, for development.",
   "type": "module",
   "scripts": {
     "dev": "vite",

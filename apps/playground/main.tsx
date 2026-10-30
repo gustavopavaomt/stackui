@@ -213,7 +213,7 @@ function tela(caminho: string) {
   return <Ajustes />;
 }
 
-/** The demo: every component, imported exactly as an app would. It grows with each phase. */
+/** The playground: every component in a small app, imported exactly as an app would. */
 function Demo() {
   const caminho = useHash();
   const aba = caminho.split("/")[1] || "settings";

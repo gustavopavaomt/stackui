@@ -1,6 +1,6 @@
 {
-  "name": "@stackui/react",
-  "version": "0.0.0",
+  "name": "stackui",
+  "version": "0.1.0",
   "description": "Build dynamic and elegant PWA applications for iOS and Android with React.",
   "license": "MIT",
   "author": "Gustavo Pavao Barboza",

@@ -1,5 +1,5 @@
 {
-  "name": "@stackui/playground",
+  "name": "stackui-playground",
   "private": true,
   "description": "The StackUI playground: every component in a demo app, for development.",
   "type": "module",
@@ -10,7 +10,7 @@
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@stackui/react": "*",
+    "stackui": "*",
     "react": "^19.3.0",
     "react-dom": "^19.3.0"
   },

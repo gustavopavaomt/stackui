@@ -13,8 +13,8 @@
     "skipLibCheck": true,
     "types": ["vite/client", "node"],
     "paths": {
-      "@stackui/react": ["../../packages/react/src/index.ts"],
-      "@stackui/react/styles.css": ["../../packages/react/src/styles/index.css"]
+      "stackui": ["../../packages/react/src/index.ts"],
+      "stackui/styles.css": ["../../packages/react/src/styles/index.css"]
     }
   },
   "include": [".", "vite.config.ts"]

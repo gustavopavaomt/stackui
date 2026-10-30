@@ -1,0 +1,39 @@
+name: Release
+
+# Publishes stackui to npm when a version tag is pushed (git tag v0.1.1 && git push --tags).
+# Trusted publishing: npm trusts this workflow through OIDC, so no npm token is stored anywhere,
+# and every version on npm links back to the commit and run that built it (provenance).
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+          cache: npm
+      # Trusted publishing needs a recent npm.
+      - run: npm install -g npm@11
+      # Install scripts stay off (also in .npmrc): a compromised dependency cannot run code on install.
+      - run: npm ci --ignore-scripts
+      - run: npm audit --audit-level=high
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build -w packages/react
+      # The tag must match the package version.
+      - run: test "v$(node -p "require('./packages/react/package.json').version")" = "$GITHUB_REF_NAME"
+      # With trusted publishing set up on npmjs.com, no token is needed. The very first version can only be
+      # published with a short-lived token (secret NPM_TOKEN), deleted right after.
+      - run: npm publish -w packages/react --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

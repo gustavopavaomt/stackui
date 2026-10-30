@@ -6,3 +6,7 @@ export { Divider, HStack, Spacer, VStack, ZStack, type StackProps } from "./prim
 export { Button, MIN_LOADING_MS, type ButtonProps, type ButtonSize, type ButtonState, type ButtonVariant } from "./components/button";
 export { AppIcon, List, Row, Section, type RowProps, type SectionProps } from "./components/list";
 export { ProgressView, type ProgressViewProps } from "./components/progress-view";
+export { Sheet, type SheetProps } from "./components/sheet";
+export { NavigationBar, ToolbarButton, ToolbarTextButton, type NavigationBarProps, type ToolbarButtonProps } from "./components/navigation-bar";
+export { NavigationStack, transitionByDepth, type NavigationStackProps, type StackTransition } from "./components/navigation-stack";
+export { TabBar, type TabBarProps, type TabItem } from "./components/tab-bar";

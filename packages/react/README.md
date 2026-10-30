@@ -22,7 +22,7 @@ Created by [Gustavo Pavão](https://github.com/gustavopavaomt).
 ## Install
 
 ```sh
-npm install stackui
+npm install stackui-kit
 ```
 
 React 19 (`react` and `react-dom`) is the only requirement.
@@ -30,8 +30,8 @@ React 19 (`react` and `react-dom`) is the only requirement.
 ## A first screen
 
 ```tsx
-import "stackui/styles.css";
-import { App, List, NavigationBar, Row, Section, Toggle } from "stackui";
+import "stackui-kit/styles.css";
+import { App, List, NavigationBar, Row, Section, Toggle } from "stackui-kit";
 import { useState } from "react";
 
 export function Settings() {
@@ -57,7 +57,7 @@ back, switching tabs crossfades. It works with any router: give it the current l
 location.
 
 ```tsx
-import { NavigationStack, TabBar } from "stackui";
+import { NavigationStack, TabBar } from "stackui-kit";
 import { Link, Routes, Route, useLocation } from "react-router";
 
 function Shell() {
@@ -102,7 +102,7 @@ decide it yourself. Scroll is remembered per location: going back returns to whe
 | **Feedback** | `ToastProvider` + `useToast` (a queue; update a toast in place), `ProgressView`, `Skeleton`, `SkeletonList`, `Redacted`, `ContentUnavailableView`, `Timeline`, `ProgressSteps`, `ErrorBoundary` |
 | **Media** | `AsyncImage` (placeholder, fade, fallback), `Avatar` (monogram or photo) |
 | **PWA** | `InstallGate`, `useStandalone`, `useEnvironment`, `useInstallPrompt`, `useIosKeyboardFix` |
-| **Barcode** | `BarcodeScanner` from `stackui/barcode` (its own entry: apps that never scan never download it) |
+| **Barcode** | `BarcodeScanner` from `stackui-kit/barcode` (its own entry: apps that never scan never download it) |
 
 Every text a component shows has an English default and a prop to translate it.
 
@@ -135,7 +135,7 @@ t.update("Sent", "success", { label: "View", onPress: openOrder });
 ### Barcode scanner
 
 ```tsx
-import { BarcodeScanner } from "stackui/barcode";
+import { BarcodeScanner } from "stackui-kit/barcode";
 
 <Sheet isPresented={scanning} onDismiss={stop} title="Scan">
   <BarcodeScanner onScan={(code) => find(code)} />

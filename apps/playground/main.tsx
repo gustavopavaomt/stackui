@@ -1,9 +1,9 @@
 import { StrictMode, useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 
-import "stackui/styles.css";
+import "stackui-kit/styles.css";
 import { DetalhePedido, Pedidos } from "./orders";
-import { App, Avatar, Badge, Button, Card, ContentUnavailableView, ProgressSteps, Redacted, SkeletonList, ToastProvider, useToast, type ButtonState, HStack, List, NavigationBar, NavigationStack, Picker, Row, SearchField, Section, Sheet, Stepper, TabBar, Text, TextEditor, TextField, Toggle, ToolbarButton, VStack } from "stackui";
+import { App, Avatar, Badge, Button, Card, ContentUnavailableView, ProgressSteps, Redacted, SkeletonList, ToastProvider, useToast, type ButtonState, HStack, List, NavigationBar, NavigationStack, Picker, Row, SearchField, Section, Sheet, Stepper, TabBar, Text, TextEditor, TextField, Toggle, ToolbarButton, VStack } from "stackui-kit";
 
 /* Tiny inline icons for the demo (the library takes any icon element). */
 const icone = (d: string) => (

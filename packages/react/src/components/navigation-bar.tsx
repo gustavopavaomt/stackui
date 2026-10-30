@@ -42,20 +42,17 @@ export function NavigationBar({ title, subtitle, displayMode = "large", onBack, 
     if (raiz && pai) setVao(parseFloat(getComputedStyle(pai).rowGap) || 0);
   }, [raiz]);
 
+  // Scrolled = the bar is stuck and the marker right before it went up past it. Measured on scroll, not with an
+  // IntersectionObserver: inside an iframe its default root is the outer page, which got this wrong.
   useEffect(() => {
-    if (typeof IntersectionObserver === "undefined" || !marco.current) return;
-    const o = new IntersectionObserver(([e]) => setRolou(!e.isIntersecting));
-    o.observe(marco.current);
-    return () => o.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!grande) return;
     const medir = () => {
-      const t = tituloGrande.current?.getBoundingClientRect();
+      const m = marco.current?.getBoundingClientRect();
       const b = barra.current?.getBoundingClientRect();
-      if (!t || !b) return;
-      setCompacto(raiz ? t.top + t.height / 2 < b.top : t.bottom < b.bottom);
+      if (!m || !b) return;
+      setRolou(m.top < b.top - 1);
+      if (!grande) return;
+      const t = tituloGrande.current?.getBoundingClientRect();
+      if (t) setCompacto(raiz ? t.top + t.height / 2 < b.top : t.bottom < b.bottom);
     };
     medir();
     document.addEventListener("scroll", medir, { passive: true, capture: true });

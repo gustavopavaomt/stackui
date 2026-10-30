@@ -9,6 +9,8 @@ on the phone, no app store needed.
 
 Created by [Gustavo Pavão](https://github.com/gustavopavaomt).
 
+**See it live:** [gustavopavaomt.github.io/stackui-site](https://gustavopavaomt.github.io/stackui-site/), every component running inside a phone.
+
 - **Simple.** Layout with `VStack`, `HStack` and `Spacer`; a screen is a `NavigationBar` and a `List`.
 - **Own CSS, no setup.** One stylesheet, themed with CSS variables. No Tailwind, no CSS-in-JS, no build plugin.
 - **Small and safe.** React is the only dependency. No install scripts. Published from CI with provenance.
